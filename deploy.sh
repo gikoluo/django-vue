@@ -1,6 +1,7 @@
 echo 'Run npm build'
 npm run build
 echo 'Done...'
+ 
 
 echo 'Format index.html as Jinja template'
 python3 format_index_html.py
@@ -18,6 +19,13 @@ echo 'Run migrations'
 python3 manage.py migrate
 echo 'Done...'
 
+
+
+echo 'Run npm dev'
+npm run dev &
+echo 'Done'
+
 export PORT=8000
 echo 'Server runnning on port ' $PORT
 python3 manage.py runserver
+

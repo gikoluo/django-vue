@@ -29,8 +29,7 @@ export default {
   name: 'App',
   methods: {
     logout () {
-      this.$store.state.username = ''
-      this.$store.state.token = ''
+    this.$store.commit('clearToken');
     }
   }
 }

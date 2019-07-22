@@ -19,7 +19,7 @@ export default {
     methods:{
       DoLogin (){
           var that = this
-//          console.log(this.$axios);
+//        console.log(this.$axios);
           this.$axios.request({  //发送axios请求
             url:'http://127.0.0.1:8000/login/', //请求路径
             method:"POST",//请求方式
@@ -32,8 +32,8 @@ export default {
             //登录成功之后，找到全局变量，吧用户名和token赋值到其中
             that.$store.commit('saveToken',response.data);
             //重定向(登录成功之后让跳转到index页面)
-              that.$router.push('/index')
-              //为什么不直接用this呢？这里的this代表的是$axios,用that他代指的是整个Vue对象
+            that.$router.push('/index')
+            //为什么不直接用this呢？这里的this代表的是$axios,用that他代指的是整个Vue对象
           })
       }
     }
