@@ -7,18 +7,28 @@
       Welcome to your Django - Vue.js app!
     </p>
 
-    <ul class="nav nav-tabs">
-      <li><router-link to="/index">首页</router-link>  <!--用于点击查看组件--></li>
-      <li><router-link to="/micro">学位课</router-link>  <!--用于点击查看组件--></li>
-      <li><router-link to="/course">课程</router-link></li>  <!--用于点击查看组件-->
-      <li><router-link to="/news">深科技</router-link></li>  <!--用于点击查看组件-->
-      <!--如果已经登录了，就不用在登录了，在页面还是显示当前用户和注销，如果没有登录就显示登录-->
-      <li v-if="this.$store.state.username">
-        <span><a>欢迎{{ this.$store.state.username }}登录</a></span>
-        <span><a @click="logout()">注销</a></span>
-      </li>
-      <li v-else=""> <router-link to="/login">登录</router-link></li>
-    </ul>
+    <div>
+      <b-nav>
+        <b-nav-item active><router-link to="/index">首页</router-link></b-nav-item>
+        <b-nav-item><router-link to="/micro">学位课</router-link></b-nav-item>
+        <b-nav-item><router-link to="/course">课程</router-link></li></b-nav-item>
+        <b-nav-item><router-link to="/news">深科技</router-link></li></b-nav-item>
+        <b-nav-item-dropdown
+          v-if="this.$store.state.username"
+          id="my-nav-dropdown"
+          text="Dropdown"
+          toggle-class="nav-link-custom"
+          right
+        >
+          <b-dropdown-item>欢迎</b-dropdown-item>
+          <b-dropdown-item><a @click="logout()">注销</a></b-dropdown-item>
+          
+          <b-dropdown-divider></b-dropdown-divider>
+          <b-dropdown-item>three</b-dropdown-item>
+        </b-nav-item-dropdown>
+        <b-nav-item v-else=""><router-link to="/login">登录</router-link></b-nav-item>
+      </b-nav>
+    </div>
    <router-view/>  <!--组件显示的位置-->
 
   </div>
