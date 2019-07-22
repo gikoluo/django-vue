@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from app.views import index
+from app.views import index, LoginView
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='home'),
+    url(r'^login/', LoginView.as_view()),
+    #url(r'^api-auth/', include('rest_framework.urls')),
+
 ]
